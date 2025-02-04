@@ -1,0 +1,11 @@
+@app.post("/predict")
+async def predict(request: Request):
+    data = await request.json()
+    url = data.get("url")
+
+    features = extract_features(url)
+    print("Extracted features shape:", features.shape)  # Debugging line
+    prediction = model.predict(features)[0]
+    result = "Phishing" if prediction == 1 else "Safe"
+
+    return {"url": url, "prediction": result}

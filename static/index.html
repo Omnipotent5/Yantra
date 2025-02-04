@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Website Detector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Phishing Website Detector</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+                <li><button id="toggleTheme">Dark Mode</button></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="input-section">
+            <input type="text" id="urlInput" placeholder="Enter website URL">
+            <button id="checkWebsiteBtn">Check Website</button>
+            <button id="copyUrl">Copy URL</button>
+        </section>
+
+        <section id="loading" class="loading-section" style="display: none;">
+            <p>🔄 Checking...</p>
+        </section>
+
+        <section id="result" class="result-section">
+            <p>Enter a URL to check if it's safe.</p>
+        </section>
+
+        <section id="history" class="history-section">
+            <h2>Checked URLs</h2>
+            <ul id="historyList"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Phishing Website Detector. All Rights Reserved.</p>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
