@@ -44,11 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.time("API Response Time");
 
         try {
-            const response = await fetch("http://127.0.0.1:8001/predict", {
+            const response = await fetch("http://127.0.0.1:8002/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ url: url })
             });
+            
 
             const data = await response.json();
             
@@ -101,5 +102,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Fix: Correct button ID for the event listener
 document.getElementById("checkWebsiteBtn").addEventListener("click", async () => {
-    window.checkWebsite();
+    const urlInput = document.getElementById("urlInput").value.trim();
+
+    if (!urlInput) {
+        alert("Please enter a URL!");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://127.0.0.1:8002/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url: urlInput })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        alert(`Prediction: ${data.prediction}`);
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error while fetching prediction.");
+    }
 });
+
+
+
